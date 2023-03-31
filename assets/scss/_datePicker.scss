@@ -1,0 +1,39 @@
+/* display-for-cool-light-box use in admin.vue*/
+.display-for-cool-light-box {
+    animation: unset;
+    opacity: 1;
+    z-index: 99;
+    transform: none;
+  }
+  
+  .vpd-input-group {
+    display: none;
+  }
+  
+  .datepicker_label {
+    @apply text-sm z-10 absolute right-9 top-1/2 -translate-y-1/2 text-sm transition-all duration-200;
+    &.active {
+      @apply -top-[2px] text-sm;
+      &::before {
+        @apply content-[''] bg-white absolute w-[calc(100%+30px)] h-[1px] top-[11px] right-[-15px] z-[-1] transition-all;
+      }
+    }
+  }
+  
+  .disabled {
+    input,
+    label {
+      @apply text-gray-75;
+    }
+  }
+  
+  //label.datepicker_label {
+  //	@apply translate-y-[-205%] md:translate-y-[-215%] text-sm;
+  //	&::before {
+  //		@apply content-[''] bg-white absolute w-[calc(100%+30px)] h-[1px] top-[12px] right-[-15px] z-[-1] transition-all;
+  //	}
+  //}
+  
+  .vpd-container::v-deep {
+    z-index: 10 !important;
+  }
