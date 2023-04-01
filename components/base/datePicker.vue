@@ -1,7 +1,6 @@
 <template>
 	<div
 		class="form-control"
-		:class="{ 'has-error': !!errorMessage, success: meta.valid }"
 	>
 		<Vue3PersianDatetimePicker
 			ref="datePicker"
@@ -16,6 +15,7 @@
 			:class="[
 				$refs.datePicker?.visible === true ? '!border-blue-44' : '',
 				$attrs.disabled ? 'bg-gray-74' : '#fff',
+				{ 'border-red-400': !!errorMessage, success: meta.valid}
 			]"
 			class="relative cursor-pointer border border-gray-14 bg-white rounded-[30px] p-4 h-[58px]"
 			@click="open"
