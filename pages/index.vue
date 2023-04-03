@@ -4,11 +4,12 @@
             <Form :initial-values="{dateOfBirth:''}"
                     :validation-schema="schema"
                     @submit="sendData">
-                <base-date-picker simple class="mt-" name="dateOfBirth" label="date of birth" max="2008/05/02"/>
+                <base-date-picker simple v-model="exitData.dateOfBirth" name="dateOfBirth" label="date of birth" max="2008/05/02"/>
                 <button data-color="blue" type="submit"
                         class="bg-green-400 border border-blue-400 rounded-lg px-6 py-2 mt-12"> Submit
                 </button>
             </Form>
+            exitData===> {{exitData}}
         </ClientOnly>
     </div>
 </template>
@@ -17,7 +18,7 @@ import {Form} from 'vee-validate'
 import {useSideValidator} from '~/composables/schemaValidate'
 
 const {schema} = useSideValidator()
-
+let exitData= reactive({})
 function sendData(data: any) {
     console.log(data)
 }
