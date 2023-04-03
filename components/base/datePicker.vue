@@ -6,7 +6,6 @@
                 :locale-config="localeConfig"
                 locale="ar"
                 v-bind="attrs"
-                v-on="$listeners"
                 @blur="handleBlur"
                 @change="handleChange"
         />
@@ -73,8 +72,14 @@ const {
     validateOnValueUpdate: false
 })
 watchEffect(() => {
+    if(!inputValue.value){
+        inputValue.value= ''
+    }
     let date = JSON.parse(JSON.stringify(unref(inputValue)))
-    emit("update:modelValue", $moment(date).format("YYYY-MM-DD"))
+    if(![null,undefined,'Invalid date',''].includes(date)){
+        console.log(inputValue.value,'let date')
+        emit("update:modelValue", $moment(date).format("YYYY-MM-DD"))
+    }
 })
 watch(
     () => selectedDate.value,
